@@ -5,3 +5,4 @@
 -BOOLEAN: verdadeiro ou falso.   -ARRAY: também é um objeto, sendo que ele tem uma relação com os intens dele.
 -NULL: null .                    -UNDEFINED: a varialvel existe mais não foi definida.
 -SYMBOL (novo): permite criar um valor número.  
+
