@@ -8,7 +8,7 @@ while (true) {
     index++;
 
     if(index > 2){
-        break;
+        break; // sai do laço.
     }
     console.log(index);
 }
@@ -21,7 +21,7 @@ for (let index = 0; index < array.length; index++) {
     const element = array[index];
 
     if (element % 2 === 0) {
-        continue;
+        continue; // pula uma interação.
     }
-    console.log(element);
+    console.log(element); // 1, 3 e 5.
 }

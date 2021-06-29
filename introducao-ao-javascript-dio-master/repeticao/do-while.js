@@ -1,7 +1,8 @@
 /**
  do
- declaracao
+ declaracao 
  while(condicao);
+ Ele execultar primeiro e depois verifica a condição.
  */
 
  let i = 0;

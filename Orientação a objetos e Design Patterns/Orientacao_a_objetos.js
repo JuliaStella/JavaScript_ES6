@@ -15,9 +15,9 @@ console.log(myText.__proto__.split === String.prototype.split);
 console.log(myText.constructor === String);
 //true
 'use strict'
-function Animal(){
+function Animal() {
     this.qtdePatas = 4;
-    this.movimentar = function(){}
+    this.movimentar = function () { }
 }
 console.log(Animal.constructor);
 //function
@@ -28,14 +28,14 @@ console.log(cachorro.__proto__ === Animal.prototype);
 //true
 console.log(cachorro.__proto__ === Function.prototype);
 //true
-console.log(cachorro instanceof Animal);
+console.log(cachorro instanceof Animal); // A instância foi criado cachorro. 
 //true
 console.log(cachorro instanceof Function);
 //false
-function Cachorro(morde){
-    Animal.call(this,4);
+function Cachorro(morde) {
+    Animal.call(this, 4); // Esse call, meio que vai levar esse novo this para a "função principal(animal)", e ele vai levar a um novo const.
     this.morde = morde;
-    this.latir = function(){
+    this.latir = function () {
         console.log('Au! Au!');
     }
 }
@@ -45,28 +45,36 @@ console.log(pug);
 const pitbull = new Cachorro(true);
 //Outra forma de declarar as funções
 'use strict'
-function Animal(){}
-Animal.prototype.qtdePatas = 0;
-Animal.prototype.movimentar = function(){}
-function Cachorro(morde){
+
+function Animal() { }
+
+Animal.prototype.qtdePatas = 0; // fica padrão
+Animal.prototype.movimentar = function () { }
+
+function Cachorro(morde) {
     this.qtdePatas = 4;
     this.morde = morde;
 }
 Cachorro.prototype = Object.create(Animal);
-Cachorro.prototype.latir = function(){
+Cachorro.prototype.latir = function () { // vai busca do padrão prototype animal.
     console.log('Au! Au!');
+
 }
+
 const pug = new Cachorro(false);
+
 const pitbull = new Cachorro(true);
-function Pessoa(name){
+
+function Pessoa(name) {
     this.name = name;
 }
+
 const p = new Pessoa('Bruna');
 console.log(p);
 //Pessoa {name: Bruna}, constructor: f Pessoa (name), __proto__:Object
-function Pessoa(name){
+function Pessoa(name) {
     this.name = name;
-    return{
+    return {
         name: 'Teste'
     };
 }
@@ -75,106 +83,147 @@ const p2 = new Pessoa('Bruna');
 String.prototype.split
 '124646'.split('')
 //quebra a string
-String.prototype.split = function(){ console.log('Ixi..');}
-//classes
+String.prototype.split = function () { console.log('Ixi..'); } // Não é recomendado fazer isso, é melhor criar a descrição bonitinha do que ficar alterando cada uma delas.
+// --CLASSES--
 //exemplo da função Animal com classes
 'use strict';
+
 class Animal {
-    constructor(qtdePatas){
+    constructor(qtdePatas) {
         this.qtdePatas = 4
     }
 }
+
 class Cachorro extends Animal {
-    constructor(morde){
+    constructor(morde) {
         super(4);
         this.morde = 4;
     }
 }
-const pug = new Cachorro (false);
+const pug = new Cachorro(false);
+
 console.log(pug);
+
 //prototype com classes
+
 'use strict'
+
 class Animal {
-    constructor(){
+    constructor() {
         this.qtdePatas = 0;
     }
-    movimentar () {}
+    movimentar() { }
 }
-class Cachorro extends Animal{
-    constructor(morde){
+
+class Cachorro extends Animal {
+    constructor(morde) {
         super();
         this.qtdePatas = 4;
         this.morde = morde;
     }
-    latir(){
+    latir() {
         console.log('Au! Au!');
     }
 }
+
 const pug = new Cachorro(false);
+
 const pitbull = new Cachorro(true);
-//modificadores de acesso versão nova
+
+// --Modificadores de acesso--
+
 'use strict';
-function Person(innitialName){
+
+function Person(innitialName) {
     let name = innitialName;
-    this.getName = function(){
+    this.getName = function () {
         return name;
     }
-    this.setName = function(newName){
+    this.setName = function (newName) {
         name = newname;
     }
 }
+
 const p = new Person('Bruna');
+
 'use strict'
+
 console.log(p);
+
 p.getName();
+// Person {getName: f, setname: f}
 p.name;
-p.setName('Cristina');
+// "Júlia"
+p.setName('Stella');
 p.getName;
-//modificadores de acesso versão antiga
+// "Stella"
+
+// --Modificadores de acesso já com o node.js--
+
 'use strict';
-class Person{
+
+class Person {
+    
     #name = ' ';
-    constructor(innitialName){
+    constructor(innitialName) {
         this.#name = innitialName;
     }
-    setName(name){
+    setName(name) {
         this.#name = name;
     }
-    getName(){
+    getName() {
         return this.#name;
     }
 }
+
 'use strict'
+
 console.log(p)
+// Persom {}
 p.getName();
+// "Júlia"
 p.name;
-p.setName('Cristina');
+// undefined
+p.setName('Stella');
 p.getName();
-//encapsulamento
+// "Stella"
+
+// --Encapsulamento--
+
 'use strict'
-function Person(innitialName){
+
+function Person(innitialName) {
+
     var name = innitialName;
+
     Object.defineProperty(this, 'name', {
-        get: function(){
+        get: function () {
             return name;
         },
-        set: function(value){
+        set: function (value) {
             name = value;
         }
     });
 }
-//semelhante aos modificadores da versão antiga
-//static
+
+// --Static-- (comparando aos modificadores da versão antiga.)
+
 'use strict';
-function Person(){}
-Person.walk = function(){
+
+function Person() { }
+
+Person.walk = function () {
     console.log('walking...');
 }
+
 console.log(Person.walk());
+
 'use strict';
-class Person{
-    static walk(){
+
+class Person {
+
+    static walk() {
         console.log('walking...')
     }
 }
-console.log(Person.walk());
+console.log(Person.walk()); // permite chamar sem instânciar.
