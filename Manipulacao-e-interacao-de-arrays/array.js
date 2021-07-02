@@ -105,8 +105,238 @@ console.log(arr3); // pega a partir da posição 2.
 interação de cada item dentro de um array.
 */
 
-const arr3 = [1,2,3,4,5,];
+const arr3 = [1,2,3,4,5];
 
-arr3.forEach(value, index => { // value: vai ser o valor do item, index: a posição do array
+arr3.forEach(value, index => { // value: vai ser o valor do item, index: a posição do array e ele recebe ainda um terceiro parãmetro.
     console.log(`${index}: ${value}`);
 });
+
+/* --MAP--
+Retorna um novo array, de mesmo tamanho, 
+iterando cada item de um array.*/
+
+const arr3 = [1,2,3,4,5];
+
+arr3.map(value => value * 2);
+// [2,4,6,8,10]
+
+/* --FLAT--
+Retorna um novo array com todos os elementos de um
+sub-array concatenados de forma recursiva de acordo com a profundidade
+especificada(depth).*/
+
+const arr4 = [1,2,[3,4]]; // "Meio que vai tirar esse array dentro dessee outro e criar um novo a partir disso"
+
+arr4.flat();
+// [1,2,3,4]
+
+/* --FLATMAP--
+Retorna um novo array assim como a função map e executa
+um fla de profundidade 1.*/
+
+const arr3 = [1,2,3,4,5];
+
+arr3.flatMap(value => [value *2]);
+// [2,4,6,8]
+
+arr3.flatMap(value => [[value *2]]);
+// [[2],[4],[6],[8]]
+
+/* --KEYS--
+Retorna um Array iterator que contém as chaves 
+para cada elemento do array.*/
+
+const arr3 = [1,2,3,4,5];
+const arrIterator = arr3.keys();
+
+arr3Iterator.next();
+// (value: 0, done: false)
+
+arr3Iterator.next();
+// (value: 1, done: false)
+
+arr3Iterator.next();
+// (value: 2, done: false)
+
+arr3Iterator.next();
+// (value: 3, done: true)
+
+/* --VALUES--
+Retorna um Array que contém os valores 
+para cada elemento do array.*/
+
+const arr3 = [1,2,3,4,5];
+const arrIterator = arr3.values();
+
+arr3Iterator.next();
+// (value: 0, done: false)
+
+arr3Iterator.next();
+// (value: 1, done: false)
+
+arr3Iterator.next();
+// (value: 2, done: false)
+
+arr3Iterator.next();
+// (value: 3, done: false)
+
+arr3Iterator.next();
+// (value: 4, done: true)
+
+/* --ENTRIES--
+Retorna um Array que contém os pares chave/valor 
+para cada elemento do array.*/
+
+const arr3 = [1,2,3,4,5];
+const arrIterator = arr3.entries();
+
+arr3Iterator.next();
+// (value: [0,1], done: false)
+
+arr3Iterator.next();
+// (value: [1,2], done: false)
+
+arr3Iterator.next();
+// (value: [2,3], done: false)
+
+arr3Iterator.next();
+// (value: [3,4], done: true)
+
+/* Buscar elementos
+
+   --FIND--
+Retorna o primeiro item de um array que satisfaz
+a condição.
+*/
+
+const arr3 = [1,2,3,4,5];
+const firtGreaterThanTwo = arr3.find(value => value > 2); // O primeiro item maior que dois.
+
+console.log(firtGreaterThanTwo);
+// 3
+
+
+/* --FINDINDEX--
+Retorna o índice do primeiro item de um array que satisfaz
+a condição.
+*/
+
+const arr3 = [1,2,3,4,5];
+const firtGreaterThanTwo = arr3.findIndex(value => value > 2); // Vai mostrar o índece.
+
+console.log(firtGreaterThanTwo); 
+// 2
+
+/* --FILTER--
+Retorna um novo array com todos os elementos que satisfazem
+a condição.
+*/
+
+const arr3 = [1,2,3,4,5];
+const firtGreaterThanTwo = arr3.filter(value => value > 2); 
+
+console.log(firtGreaterThanTwo); 
+// [3,4]
+
+/* --INDEXOF--
+Retorna o primeiro índice em que um elemento 
+pode ser encontrado no array.
+*/
+
+const arr5 = [1,3,3,4,3];
+const firtIndexOfItem = arr5.indexOf(3); 
+
+console.log(firtIndexOfItem); 
+// 1
+
+
+/* --LASTINDEXOF--
+Retorna o último índice em que um elemento 
+pode ser encontrado no array.
+*/
+
+const arr5 = [1,3,3,4,3];
+const firtIndexOfItem = arr5.indexOf(3); 
+
+console.log(firtIndexOfItem); 
+// 4
+
+/* --INCLUDES--
+Retorna um booleano verificando se determinado elemento 
+existe no array.
+*/
+
+const arr5 = [1,3,3,4,3];
+
+const hasItemOne = arr5.includes(1); 
+// true
+
+const hasItemOne = arr5.includes(2);  
+// false
+
+/* --SOME--
+Retorna um booleano verificando se pelo menos um item de um array 
+satisfaz a condição.
+*/
+
+const arr3 = [1,2,3,4,5];
+
+const hasSomeEvenNumber = arr3.some(value => value % 2 ===0); 
+// true
+
+/* --EVERY--
+Retorna um booleano verificando se todos oscitem de um array 
+satisfaz a condição.
+*/
+
+const arr3 = [1,2,3,4,5];
+
+const hasSomeEvenNumber = arr3.every(value => value % 2 ===0); 
+// false
+
+/* --SORT--
+Ordena os elementos de um array de acordo com a condição.
+*/
+const arr3 = [1,2,3,4,5];
+
+arr3.sort();
+// [1,2,3,4,5]
+
+
+/* --REVERSE--
+Inverte os elementos de um array.
+*/
+
+const arr3 = [1,2,3,4,5];
+
+arr3.reverse();
+// [5,4,3,2,1]
+
+
+/* Transformar em outro tipo de dados
+
+   --JOIN--
+Junta todos os elementos de um array, separados por um delimitador
+e retorna uma string.
+*/
+
+const arr3 = [1,2,3,4,5];
+
+arr3.join('-');
+// "1-2-3-4-5"
+
+/* --REDUCE--
+Retorna um novo tipo de dado iterando cada posição de um array.
+*/
+
+
+const arr3 = [1,2,3,4,5];
+
+arr3.reduce((total, value) => total += value, 0);
+// 15
+
+/* --REDUCE--
+Retorna um novo tipo de dado iterando cada posição de um array.
+*/
+
+
